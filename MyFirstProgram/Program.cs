@@ -24,7 +24,6 @@ var name = Console.ReadLine();
 var date = DateTime.UtcNow;
 
 Console.WriteLine("---------------------------");
-
 Console.WriteLine($"Hello, {name.ToUpper()}. It's {date.DayOfWeek}. This is your math game. Enjoy!");
 Console.WriteLine(@$"What game mode would you like to play? Choose from the options:\n
 A - Addition
@@ -37,30 +36,30 @@ Console.WriteLine("---------------------------");
 
 var gameSelected = Console.ReadLine();
 
-if (gameSelected.Trim().ToLower() == "a")
-{
-    AdditionGame("Addition game selected");
+switch (gameSelected.Trim().ToLower()) {
+    case "a":
+        AdditionGame("Addition game selected");
+        break;
+    case "s":
+        SubtractionGame("Subtraction game selected");
+        break;
+    case "m":
+        MultiplicationGame("Multiplication game selected");
+        break;
+    case "d":
+        DivisionGame("Division game selected");
+        break;
+    case "q":
+        Console.WriteLine("Goodbye");
+        Environment.Exit(1);
+        break;
+    default:
+        Console.WriteLine("Invalid Input");
+        Environment.Exit(1);
+        break;
 }
-else if (gameSelected.Trim().ToLower() == "s")
-{
-    SubtractionGame("Subtraction game selected");
-}
-else if (gameSelected.Trim().ToLower() == "m")
-{
-    MultiplicationGame("Multiplication game selected");
-}
-else if (gameSelected.Trim().ToLower() == "d")
-{
-    DivisionGame("Division game selected");
-}
-else if (gameSelected.Trim().ToLower() == "q")
-{
-    Console.WriteLine("Goodbye");
-    Environment.Exit(1);
-}
-else {
-    Console.WriteLine("Invalid input");
-}
+
+
 
 void DivisionGame(string message)
 {
